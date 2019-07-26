@@ -30,9 +30,9 @@
         </div>
         <div v-if="selectsubfamilia && selectsubfamilia.serie && selectsubfamilia.serie" class="col-md-6 mt-4">
             <p>Seleccionar Serie para subcategoria</p>
-            <select class="custom-select form-control" v-model="selectserie">
+            <select class="custom-select form-control" v-model="selectseriesub">
                 <option v-for="item in selectsubfamilia.serie" :value="item">{{ item.text['es']['title'] }}</option>
-                <input type="text" class="d-none" name="serie_id" :value="selectserie && selectserie.id">
+                <input type="text" class="d-none" name="serie_id" :value="selectseriesub && selectseriesub.id">
             </select>
         </div>
 
@@ -63,9 +63,10 @@
               // selectmodelo: this.producto && this.producto.model_id ? this.producto.model_id : {},
               // selectserie: this.producto && this.producto.serie_id ? this.producto.serie_id : {},
               selectfamilia: this.producto && this.producto.family ? this.producto.family : {},
-              selectmarca: 0,
-              selectmodelo: 0,
+              selectmarca: this.producto && this.producto.brand ? this.producto.brand : {},
+              selectmodelo: this.producto && this.producto.model ? this.producto.model : {},
               selectserie: this.producto && this.producto.serie ? this.producto.serie : {},
+              selectseriesub: this.producto && this.producto.serie ? this.producto.serie : {},
               selectsubfamilia: this.producto && this.producto.subfamily ? this.producto.subfamily : {},
               // selectserie: this.producto && this.producto.brand_id ? this.producto.brand_id : 1,
               subcate:[],
@@ -82,6 +83,8 @@
             // console.log(this.selectsubfamilia)
             // console.log(this.familias)
             console.log(this.familias)
+            console.log(this.producto)
+
             // console.log(this.producto.subfamily === this.selectsubfamilia);
             // this.getSubcategoria();
             // this.getsubfamilia();

@@ -33,7 +33,8 @@
                 </div>
             @endforeach
             <div class="col-md-12" style="margin-top: 1.5rem">
-                <select-component :familias="{{ json_encode($familias) }}" :marcas="{{ json_encode($marcas) }}" :modelos="{{ json_encode($modelos) }}" :series="{{ json_encode($series) }}" :producto="{{ json_encode($producto) }}"></select-component>
+                <selected-component :familias="{{ json_encode($familias) }}" :producto="{{ json_encode($producto) }}"></selected-component>
+                {{--<select-component :familias="{{ json_encode($familias) }}" :marcas="{{ json_encode($marcas) }}" :modelos="{{ json_encode($modelos) }}" :series="{{ json_encode($series) }}" :producto="{{ json_encode($producto) }}"></select-component>--}}
             </div>
             <div class="md-form col-md-6">
                 <input type="text" id="order" name="order" placeholder="Orden" class="form-control" value="{!! $producto->order !!}">

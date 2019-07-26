@@ -16,6 +16,11 @@ class Product extends Model
         'order', 'text','image','family_id','brand_id','mode_id','serie_id','subfamily_id'
     ];
 
+    public function subfamily()
+    {
+        return $this->belongsTo('App\Subfamily');
+    }
+
     public function family()
     {
         return $this->belongsTo('App\Family');

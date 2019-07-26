@@ -19,7 +19,8 @@
                 </div>
             @endforeach
             <div class="col-md-12" style="margin-top: 1.5rem">
-                <select-component :familias="{{ json_encode($familias) }}" :marcas="{{ json_encode($marcas) }}" :modelos="{{ json_encode($modelos) }}" :subfamilias="{{ json_encode($subfamilias) }}" ></select-component>
+                <select-serie :familias="{{ json_encode($familias) }}"></select-serie>
+                {{--<select-component :familias="{{ json_encode($familias) }}" ></select-component>--}}
                 {{--<select name="family_id" id="" class="form-control">--}}
                     {{--<option value="" selected disabled>Seleccionar Familia</option>--}}
                     {{--@forelse($familias as $c)--}}

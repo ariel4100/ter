@@ -35,7 +35,7 @@
                         @endgallery
                     </div>
                     <div class="col-md-6 text-center">
-                        @forelse($producto->image['imagenes'] as $item)
+                        @forelse($producto->image['imagenes'] ?? [] as $item)
                             <img src="{{ asset($item['image']) }}" alt="" class="img-fluid mt-4">
                         @empty
                         @endforelse

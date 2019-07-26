@@ -8,12 +8,12 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Imagen</th>
                         <th scope="col">Titulo</th>
                         <th scope="col">Familia</th>
                         <th scope="col">Marca</th>
-                        <th scope="col">Modelo</th>
-                        <th scope="col">Serie</th>
+                        <th scope="col">Subfamilia</th>
+                        {{--<th scope="col">Modelo</th>--}}
+                        {{--<th scope="col">Serie</th>--}}
                         <th scope="col">Orden</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -23,12 +23,13 @@
                     @forelse ($productos as $item)
                         <tr>
 {{--                            @dd($item->brand())--}}
-                            <td><img src="{{  asset(isset($item->plans) ? $item->plans[0]{'image'} : 'uploads/no-img.png') }}" style="width: 100px"></td>
+                            {{--<td><img src="{{  asset(isset($item->plans) ? $item->plans[0]{'image'} : 'uploads/no-img.png') }}" style="width: 100px"></td>--}}
                             <td>{{ $item->text['es']{'title'} ?? '' }}</td>
                             <td>{{ $item->family->text['es']{'title'} ?? 'ninguno' }}</td>
                             <td>{{ $item->brand->text['es']{'title'} ?? 'ninguno' }}</td>
-                            <td>{{ $item->model->text['es']{'title'} ?? 'ninguno' }}</td>
-                            <td>{{ $item->serie->text['es']{'title'} ?? 'ninguno' }}</td>
+                            <td>{{ $item->subfamily->text['es']{'title'} ?? 'ninguno' }}</td>
+                            {{--<td>{{ $item->model->text['es']{'title'} ?? 'ninguno' }}</td>--}}
+                            {{--<td>{{ $item->serie->text['es']{'title'} ?? 'ninguno' }}</td>--}}
                             <td>{{ $item->order }}</td>
                             <td>
                                 <a class="btn btn-sm btn-warning" href="{{ route('producto.edit',$item->id) }}"><i class="fas fa-pen"></i></a>

@@ -12,7 +12,8 @@
                         <th scope="col">Titulo</th>
                         <th scope="col">Familia</th>
                         <th scope="col">Marca</th>
-                        <th scope="col">Modelo</th>
+                        <th scope="col">Sudfamilia</th>
+                        {{--<th scope="col">Modelo</th>--}}
                         <th scope="col">Orden</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -26,7 +27,7 @@
                             <td>{{ $item->text['es']{'title'} ?? '' }}</td>
                             <td>{{ $item->family->text['es']{'title'} ?? 'ninguno' }}</td>
                             <td>{{ $item->brand->text['es']{'title'} ?? 'ninguno' }}</td>
-                            <td>{{ $item->model->text['es']{'title'} ?? 'ninguno' }}</td>
+                            <td>{{ $item->subfamily->text['es']{'title'} ?? 'ninguno' }}</td>
                             <td>{{ $item->order }}</td>
                             <td>
                                 <a class="btn btn-sm btn-warning" href="{{ route('serie.edit',$item->id) }}"><i class="fas fa-pen"></i></a>

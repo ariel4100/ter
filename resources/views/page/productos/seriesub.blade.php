@@ -11,7 +11,7 @@
 
     <div class="container my-5">
         <div class="row">
-            {{--@include('page.partials.botonera')--}}
+            @include('page.partials.botonera2')
             <div class="col-md-9">
                 <div class="row">
                     @forelse($series as $item)

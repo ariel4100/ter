@@ -23,6 +23,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('gallery-component', require('./components/GalleryComponent.vue').default);
 Vue.component('image-component', require('./components/ImageComponent.vue').default);
 Vue.component('select-component', require('./components/SelectComponent.vue').default);
+Vue.component('select-serie', require('./components/SelectSerieComponent.vue').default);
+Vue.component('selected-serie-component', require('./components/SelectedSerieComponent.vue').default);
+Vue.component('selected-component', require('./components/SelectedComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -21,7 +21,15 @@ class ProductController extends Controller
 
     public function create()
     {
-        $familias = Family::orderBy('order')->get();
+        $familias = Family::with('brand')
+            ->with('brand.model')
+            ->with('brand.model.serie')
+            ->with('brand.model.serie.product')
+            ->with('subfamily')
+            ->with('subfamily.serie')
+            ->with('subfamily.serie.product')
+            ->orderBy('order')
+            ->get();
         $marcas = Brand::orderBy('order')->get();
         $modelos = Models::orderBy('order')->get();
         $series = Serie::orderBy('order')->get();
@@ -41,7 +49,7 @@ class ProductController extends Controller
             foreach ($gallery as $k=>$item)
             {
                 $path = $item['image']->store('uploads/productos');
-                $gallery[$k]['image'] = "uploads/{$path}";
+                $gallery[$k]['image'] = $path;
             }
         }
 
@@ -50,7 +58,7 @@ class ProductController extends Controller
             foreach ($imagenes as $k=>$item)
             {
                 $path = $item['image']->store('uploads/productos');
-                $imagenes[$k]['image'] = "uploads/{$path}";
+                $imagenes[$k]['image'] = $path;
             }
         }
 
@@ -59,7 +67,7 @@ class ProductController extends Controller
         $product->image = ['gallery' => $gallery,'imagenes' => $imagenes];
         $product->order = $request->order;
         $product->family_id = $request->family_id;
-        $product->subfamily_id = $request->subfamilia_id;
+        $product->subfamily_id = $request->subfamily_id;
         $product->brand_id = $request->marca_id ;
         $product->model_id = $request->modelo_id ;
         $product->serie_id = $request->serie_id ;
@@ -70,8 +78,41 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $producto = Product::find($id);
-        $familias = Family::orderBy('order')->get();
+//        $producto = Product::find($id);
+        $producto = Product::with('subfamily')
+            ->with('family')
+            ->with('family.subfamily')
+            ->with('brand')
+            ->with('brand.model')
+            ->with('brand.model.serie')
+            ->with('family.brand')
+            ->with('family.brand.model')
+            ->with('family.brand.model.serie')
+            ->with('model')
+            ->with('model.serie')
+//            ->with('family.brand.model.serie')
+            ->with('serie')
+            ->with('subfamily.serie')
+            ->with('family.subfamily.serie')
+//            ->with('family.brand')
+            //            ->with('subfamily.family.subfamily')
+//            ->with('subfamily.family.subfamily')
+//            ->with('model')
+//            ->with('brand.model')
+//            ->with('brand.model.')
+            ->where('id',$id)->first();
+        $familias = Family::with('brand')
+            ->with('brand.model')
+            ->with('subfamily')
+            ->with('subfamily.serie')
+//            ->with('brand.model')
+            ->with('brand.model.serie')
+//            ->with('brand.model.serie.product')
+//            ->with('subfamily')
+//            ->with('subfamily.serie')
+//            ->with('subfamily.serie.product')
+            ->orderBy('order')
+            ->get();
         $subfamilias = Subfamily::orderBy('order')->get();
         $marcas = Brand::orderBy('order')->get();
         $modelos = Models::orderBy('order')->get();

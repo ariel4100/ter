@@ -10,13 +10,13 @@
                 </a>
                 <ul class="list-unstyled collapse  " id="categoria_{{$key}}">
                     @forelse($item->model as $key1=>$data)
-                        {{--@dd($data->series)--}}
+{{--                        @dd($data->serie)--}}
                         <li class="list-group-item border-0 px-3">
                             <a href="{{ route('serie',$data->id) }}" data-target="#model_{{$key1}}" data-toggle="collapse" aria-expanded="false" class="d-flex align-items-center p-2 border-bottom  ">
                                 <span onclick="location.href='{{ route('serie',$data->id) }}'">{!! $data->text[App::getLocale()]['title'] !!}</span><i class="fas fa-chevron-right ml-auto"></i>
                             </a>
                             <ul class="list-unstyled collapse  " id="model_{{$key1}}">
-                                @forelse($data->series as $data)
+                                @forelse($data->serie as $data)
                                     {{--@dd($data->product)--}}
                                     {{--<li><a href="" class="px-3 py-2  @if(isset($producto)) {{$data->id == $producto->id ? 'ter-color': null }}@endif">{{ $data->text[App::getLocale()]['title']  }}</a></li>--}}
                                     <li class="list-group-item border-0 px-3">

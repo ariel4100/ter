@@ -29,6 +29,8 @@ class SerieController extends Controller
 //            ->with('subfamily.serie')
 //            ->with('subfamily.serie.product')
             ->orderBy('order')
+            ->where('id',1)
+            ->Orwhere('id',2)
             ->get();
         $subfamilias = Subfamily::orderBy('order')->get();
         $marcas = Brand::orderBy('order')->get();
@@ -40,7 +42,6 @@ class SerieController extends Controller
     public function store(Request $request)
     {
 //        dd($request->all());
-
         $gallery = $request->gallery;
 
         if (isset($gallery))
@@ -72,9 +73,14 @@ class SerieController extends Controller
     public function edit($id)
     {
         $serie = Serie::with('subfamily')
+            ->with('brand')
+            ->with('brand.model')
+            ->with('model')
+//            ->with('brand.model')
             ->with('family')
-            ->with('family.subfamily')
             ->with('family.brand')
+            ->with('family.brand.model')
+            ->with('family.subfamily')
             //            ->with('subfamily.family.subfamily')
 //            ->with('subfamily.family.subfamily')
 //            ->with('model')
@@ -84,11 +90,14 @@ class SerieController extends Controller
         $familias = Family::with('brand')
             ->with('brand.model')
 //            ->with('brand.model.serie')
+//            ->with('brand.model.serie')
 //            ->with('brand.model.serie.product')
             ->with('subfamily')
 //            ->with('subfamily.serie')
 //            ->with('subfamily.serie.product')
             ->orderBy('order')
+            ->where('id',1)
+            ->Orwhere('id',2)
             ->get();
         $subfamilias = Subfamily::orderBy('order')->get();
         $marcas = Brand::orderBy('order')->get();

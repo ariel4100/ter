@@ -17,7 +17,7 @@
                 <div class="row">
                     @forelse($series as $item)
                         <div class="col-md-4">
-                            <a href="{{ route('producto',$item->id) }}" class="nav-link text-uppercase">
+                            <a href="{{ route('productos',$item->id) }}" class="nav-link text-uppercase">
                                 <img src="{{ asset($item->image[0]['title'] ?? 'uploads/no-img.png') }}" alt="" style="height: 200px;" class="img-fluid w-100">
                                 <p class=" ter-color my-2">{!! $item->text[App::getLocale()]['title'] !!}</p>
                             </a>

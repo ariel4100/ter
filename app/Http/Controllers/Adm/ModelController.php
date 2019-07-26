@@ -18,7 +18,7 @@ class ModelController extends Controller
 
     public function create()
     {
-        $familias = Family::orderBy('order')->get();
+        $familias = Family::with('brand')->orderBy('order')->first();
         $marcas = Brand::orderBy('order')->get();
 //        dd($familias);
         return view('adm.model.create',compact('familias','marcas'));
@@ -53,7 +53,7 @@ class ModelController extends Controller
     public function edit($id)
     {
         $modelo = Models::find($id);
-        $familias = Family::orderBy('order')->get();
+        $familias = Family::with('brand')->orderBy('order')->first();
         $marcas = Brand::orderBy('order')->get();
         return view('adm.model.edit',compact('modelo','familias','marcas'));
     }

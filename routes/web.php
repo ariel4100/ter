@@ -47,7 +47,7 @@ Auth::routes();
 /*************************RUTAS ADM******************************/
 
 
-Route::group([  'prefix' => 'adm'],function (){
+Route::group(['middleware' => 'auth',  'prefix' => 'adm'],function (){
     Route::view('/',  'adm.dashboard.index');
     // SLIDERS
     Route::group(['prefix' => 'slider', 'as' => 'slider'], function() {

@@ -26,9 +26,12 @@ class ProductController extends Controller
     }
 
     public function modelos($id){
+//        dd($id);
 //        $modelos = Models::where('brand_id',$id)->orderBy('order')->get();
         $modelos = Models::where('brand_id',$id)->orderBy('order')->get();
-        $marcas = Brand::orderBy('order')->get();
+        $marcas = Brand::with('model')
+            ->with('model.serie')
+            ->orderBy('order')->get();
 //        dd($modelos);
         return view('page.productos.modelos',compact('modelos','marcas'));
     }
@@ -36,16 +39,18 @@ class ProductController extends Controller
     public function serie($id){
         $series = Serie::where('model_id',$id)->orderBy('order')->get();
         $modelos = Models::orderBy('order')->get();
-        $marcas = Brand::orderBy('order')->get();
+        $marcas = Brand::with('model')
+            ->with('model.serie')
+            ->orderBy('order')->get();
 //        dd($series);
         return view('page.productos.series',compact('series','modelos','marcas'));
     }
-    public function subfamiliaserie($id){
-        $series = Serie::where('subfamily_id',$id)->orderBy('order')->get();
-        $subfamilias = Subfamily::orderBy('order')->get();
-//        dd($series);
-        return view('page.productos.series',compact('series','subfamilias'));
-    }
+//    public function subfamiliaserie($id){
+//        $series = Serie::where('subfamily_id',$id)->orderBy('order')->get();
+//        $subfamilias = Subfamily::orderBy('order')->get();
+////        dd($series);
+//        return view('page.productos.series',compact('series','subfamilias'));
+//    }
 
     public function seriesub($id){
         $series = Serie::where('subfamily_id',$id)->orderBy('order')->get();
@@ -56,42 +61,37 @@ class ProductController extends Controller
 
     public function productossub($id){
         $productos = Product::where('serie_id',$id)->orderBy('order')->get();
-        $modelos = Models::orderBy('order')->get();
-        $marcas = Brand::orderBy('order')->get();
-        $series = Serie::orderBy('order')->get();
+        $subfamilias = Subfamily::orderBy('order')->get();
 
-        dd($productos);
-        return view('page.productos.productossub',compact('productos','modelos','marcas','series'));
+//        dd($productos);
+        return view('page.productos.productossub',compact('productos','subfamilias'));
     }
 
     public function productosub($id){
         $producto = Product::find($id);
         $productos = Product::where('serie_id',$id)->orderBy('order')->get();
-        $modelos = Models::orderBy('order')->get();
-        $marcas = Brand::orderBy('order')->get();
-        $series = Serie::orderBy('order')->get();
-//        dd($modelos);
+//        $modelos = Models::orderBy('order')->get();
+//        $marcas = Brand::orderBy('order')->get();
+//        $series = Serie::orderBy('order')->get();
+        dd($productos);
         return view('page.productos.productossub',compact('productos','modelos','marcas','series','producto'));
     }
 
     public function productos($id){
         $productos = Product::where('serie_id',$id)->orderBy('order')->get();
-        $modelos = Models::orderBy('order')->get();
         $marcas = Brand::orderBy('order')->get();
-        $series = Serie::orderBy('order')->get();
 
 //        dd($modelos);
-        return view('page.productos.productos',compact('productos','modelos','marcas','series'));
+        return view('page.productos.productos',compact('productos','marcas'));
     }
 
     public function producto($id){
         $producto = Product::find($id);
         $text = $producto->text[App::getLocale()];
-        $modelos = Models::orderBy('order')->get();
         $marcas = Brand::orderBy('order')->get();
-        $series = Serie::orderBy('order')->get();
+
         $productos = Serie::orderBy('order')->get();
-//        dd($modelos);
-        return view('page.productos.producto',compact('productos','modelos','marcas','series','producto','text'));
+        dd($producto);
+        return view('page.productos.producto',compact('productos','marcas','producto','text'));
     }
 }

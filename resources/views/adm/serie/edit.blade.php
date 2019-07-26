@@ -19,7 +19,8 @@
                 </div>
             @endforeach
             <div class="col-md-12" style="margin-top: 1.5rem">
-                <select-component :familias="{{ json_encode($familias) }}" :marcas="{{ json_encode($marcas) }}" :producto="{{ json_encode($serie) }}"></select-component>
+                <selected-serie-component :familias="{{ json_encode($familias) }}" :serie="{{ json_encode($serie) }}"></selected-serie-component>
+                {{--<select-component :familias="{{ json_encode($familias) }}" :marcas="{{ json_encode($marcas) }}" :producto="{{ json_encode($serie) }}"></select-component>--}}
             </div>
             <div class="md-form col-md-6">
                 <input type="text" id="order" name="order" placeholder="Orden" class="form-control" value="{!! $serie->order !!}">

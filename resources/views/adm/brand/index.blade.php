@@ -19,7 +19,7 @@
 
                     @forelse ($marcas as $item)
                         <tr>
-                          <td><img src="{{ asset($item->image[0]{'image'} ? 'uploads/'.$item->image[0]{'image'} : 'uploads/no-img.png') }}" style="width: 100px"></td>
+                          <td><img src="{{ asset($item->image[0]{'image'} ?? 'uploads/no-img.png') }}" style="width: 100px"></td>
                             <td>{{ $item->text['es']{'title'} ?? '' }}</td>
                             <td>{{ $item->family->text['es']{'title'} ?? 'ninguno' }}</td>
                             <td>{{ $item->order }}</td>

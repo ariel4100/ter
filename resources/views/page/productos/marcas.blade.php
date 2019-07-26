@@ -6,6 +6,8 @@
     <div class="container my-5">
         @if(count($marcas))
         <h2 class="ter-color">Marcas</h2>
+        @else
+            {{--<h2 class="ter-color">Uso</h2>--}}
         @endif
         <div class="row">
             @forelse($marcas as $item)
@@ -13,7 +15,7 @@
                 {{--@dd($item->image[0]['image'])--}}
                 <a href="{{ route('modelos',$item->id) }}" class="">
                     <div class="">
-                        <img src="{{ asset(Storage::url($item->image[0]['image']) ?? 'uploads/no-img.png') }}" alt="" class="w-100">
+                        <img src="{{ asset($item->image[0]['image'] ?? 'uploads/no-img.png') }}" alt="" class="w-100">
                     </div>
                     <h4 class="text-center ter-color my-2">{!! $item->text[App::getLocale()]['title'] !!}</h4>
                 </a>

@@ -2035,6 +2035,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // register globally
 //Vue.component('multiselect', Multiselect)
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2049,11 +2058,11 @@ __webpack_require__.r(__webpack_exports__);
       // selectmarca: this.producto && this.producto.brand_id ? this.producto.brand_id : {},
       // selectmodelo: this.producto && this.producto.model_id ? this.producto.model_id : {},
       // selectserie: this.producto && this.producto.serie_id ? this.producto.serie_id : {},
-      selectfamilia: this.producto.family ? this.producto.family : {},
+      selectfamilia: this.producto && this.producto.family ? this.producto.family : {},
       selectmarca: 0,
       selectmodelo: 0,
-      selectserie: 0,
-      selectsubfamilia: this.producto.subfamily ? this.producto.subfamily : {},
+      selectserie: this.producto && this.producto.serie ? this.producto.serie : {},
+      selectsubfamilia: this.producto && this.producto.subfamily ? this.producto.subfamily : {},
       // selectserie: this.producto && this.producto.brand_id ? this.producto.brand_id : 1,
       subcate: [],
       subfami: [],
@@ -2065,10 +2074,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log(this.producto);
-    console.log(this.familias);
-    console.log(this.selectfamilia);
-    this.getSubcategoria(); // this.getsubfamilia();
+    // console.log(this.selectsubfamilia)
+    // console.log(this.familias)
+    console.log(this.familias); // console.log(this.producto.subfamily === this.selectsubfamilia);
+    // this.getSubcategoria();
+    // this.getsubfamilia();
     // this.getCapacidad()
   },
   computed: {},
@@ -2078,7 +2088,446 @@ __webpack_require__.r(__webpack_exports__);
       this.selectmodelo = 0;
       this.selectserie = 0; // this.catseleccionado = this.producto.category_id != null ? this.producto.category_id : 0;
       // this.subcatseleccionado = this.producto.subcategory_id != null ? this.producto.subcategory_id : 0;
-      // console.log(this.selectsubfamilia)
+      // console.log(this.selectserie)
+      // // this.cate = this.categoria.filter(item => item.id == this.producto.category_id);
+      // if (this.marcas.length)
+      // {
+      //     this.subcate = this.marcas.filter(item => (item.family_id && item.family_id == this.selectfamilia));
+      // }
+      // if (this.modelos.length)
+      // {
+      //     this.model = this.modelos.filter(item => (item.brand_id && item.brand_id == this.selectmarca));
+      // }
+      // if (!this.series == undefined)
+      // {
+      //     this.serie = this.series.filter(item => (item.model_id && item.model_id == this.selectmodelo));
+      // }
+      //
+      // if (this.subfamilias.length)
+      // {
+      //     this.subfami = this.subfamilias.filter(item => (item.family_id  == this.selectfamilia));
+      //     console.log(this.subfami)
+      //
+      // }
+      // this.subfami = this.subfamilias.filter(item => (item.family_id && item.family_id == this.selectfamilia));
+      // this.serie = this.series.filter(item => (item.model_id && item.model_id == this.selectmodelo));
+      // console.log(this.subcate)
+      // console.log(this.subfami)
+    },
+    getSubfamilia: function getSubfamilia() {// this.catseleccionado = this.producto.category_id != null ? this.producto.category_id : 0;
+      // this.subcatseleccionado = this.producto.subcategory_id != null ? this.producto.subcategory_id : 0;
+      // console.log(this.selectfamilia)
+      // this.cate = this.categoria.filter(item => item.id == this.producto.category_id);
+      // console.log(this.subcate)
+      // console.log(this.subfami)
+    },
+    addCapacidad: function addCapacidad() {
+      this.capacidad.push({
+        cc: '',
+        price: '',
+        price_offer: '',
+        offer: ''
+      });
+    },
+    deleteCapacidad: function deleteCapacidad(index) {
+      this.capacidad.splice(index, 1); //this.imageData[index]= '';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectSerieComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SelectSerieComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// register globally
+//Vue.component('multiselect', Multiselect)
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['subfamilias', 'producto', 'marcas', 'familias', 'modelos', 'series'],
+  // components: {
+  //     Multiselect,
+  //     Money
+  // },
+  data: function data() {
+    return {
+      // selectfamilia: this.producto && this.producto.category_id ? this.producto.category_id : {},
+      // selectmarca: this.producto && this.producto.brand_id ? this.producto.brand_id : {},
+      // selectmodelo: this.producto && this.producto.model_id ? this.producto.model_id : {},
+      // selectserie: this.producto && this.producto.serie_id ? this.producto.serie_id : {},
+      selectfamilia: this.producto && this.producto.family ? this.producto.family : {},
+      selectmarca: 0,
+      selectmodelo: 0,
+      selectserie: this.producto && this.producto.serie ? this.producto.serie : {},
+      selectsubfamilia: this.producto && this.producto.subfamily ? this.producto.subfamily : {},
+      // selectserie: this.producto && this.producto.brand_id ? this.producto.brand_id : 1,
+      subcate: [],
+      subfami: [],
+      model: [],
+      serie: [],
+      cate: [],
+      terminacion: [],
+      url: document.__API_URL
+    };
+  },
+  mounted: function mounted() {
+    // console.log(this.selectsubfamilia)
+    console.log(this.familias);
+    console.log(this.selectsubfamilia); // console.log(this.producto.subfamily === this.selectsubfamilia);
+    // this.getSubcategoria();
+    // this.getsubfamilia();
+    // this.getCapacidad()
+  },
+  computed: {},
+  methods: {
+    getSubcategoria: function getSubcategoria() {
+      // this.selectmarca = 0;
+      // this.selectmodelo = 0;
+      console.log(this.selectsubfamilia);
+      this.selectmarca = 0; // this.catseleccionado = this.producto.category_id != null ? this.producto.category_id : 0;
+      // this.subcatseleccionado = this.producto.subcategory_id != null ? this.producto.subcategory_id : 0;
+      // console.log(this.selectserie)
+      // // this.cate = this.categoria.filter(item => item.id == this.producto.category_id);
+      // if (this.marcas.length)
+      // {
+      //     this.subcate = this.marcas.filter(item => (item.family_id && item.family_id == this.selectfamilia));
+      // }
+      // if (this.modelos.length)
+      // {
+      //     this.model = this.modelos.filter(item => (item.brand_id && item.brand_id == this.selectmarca));
+      // }
+      // if (!this.series == undefined)
+      // {
+      //     this.serie = this.series.filter(item => (item.model_id && item.model_id == this.selectmodelo));
+      // }
+      //
+      // if (this.subfamilias.length)
+      // {
+      //     this.subfami = this.subfamilias.filter(item => (item.family_id  == this.selectfamilia));
+      //     console.log(this.subfami)
+      //
+      // }
+      // this.subfami = this.subfamilias.filter(item => (item.family_id && item.family_id == this.selectfamilia));
+      // this.serie = this.series.filter(item => (item.model_id && item.model_id == this.selectmodelo));
+      // console.log(this.subcate)
+      // console.log(this.subfami)
+    },
+    getSubfamilia: function getSubfamilia() {// this.catseleccionado = this.producto.category_id != null ? this.producto.category_id : 0;
+      // this.subcatseleccionado = this.producto.subcategory_id != null ? this.producto.subcategory_id : 0;
+      // console.log(this.selectfamilia)
+      // this.cate = this.categoria.filter(item => item.id == this.producto.category_id);
+      // console.log(this.subcate)
+      // console.log(this.subfami)
+    },
+    addCapacidad: function addCapacidad() {
+      this.capacidad.push({
+        cc: '',
+        price: '',
+        price_offer: '',
+        offer: ''
+      });
+    },
+    deleteCapacidad: function deleteCapacidad(index) {
+      this.capacidad.splice(index, 1); //this.imageData[index]= '';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectedComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SelectedComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// register globally
+//Vue.component('multiselect', Multiselect)
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['subfamilias', 'producto', 'marcas', 'familias', 'modelos', 'series'],
+  // components: {
+  //     Multiselect,
+  //     Money
+  // },
+  data: function data() {
+    return {
+      // selectfamilia: this.producto && this.producto.category_id ? this.producto.category_id : {},
+      // selectmarca: this.producto && this.producto.brand_id ? this.producto.brand_id : {},
+      // selectmodelo: this.producto && this.producto.model_id ? this.producto.model_id : {},
+      // selectserie: this.producto && this.producto.serie_id ? this.producto.serie_id : {},
+      selectfamilia: this.producto && this.producto.family ? this.producto.family : {},
+      selectmarca: this.producto && this.producto.brand ? this.producto.brand : {},
+      selectmodelo: this.producto && this.producto.model ? this.producto.model : {},
+      selectserie: this.producto && this.producto.serie ? this.producto.serie : {},
+      selectseriesub: this.producto && this.producto.serie ? this.producto.serie : {},
+      selectsubfamilia: this.producto && this.producto.subfamily ? this.producto.subfamily : {},
+      // selectserie: this.producto && this.producto.brand_id ? this.producto.brand_id : 1,
+      subcate: [],
+      subfami: [],
+      model: [],
+      serie: [],
+      cate: [],
+      terminacion: [],
+      url: document.__API_URL
+    };
+  },
+  mounted: function mounted() {
+    // console.log(this.selectsubfamilia)
+    // console.log(this.familias)
+    console.log(this.familias);
+    console.log(this.producto); // console.log(this.producto.subfamily === this.selectsubfamilia);
+    // this.getSubcategoria();
+    // this.getsubfamilia();
+    // this.getCapacidad()
+  },
+  computed: {},
+  methods: {
+    getSubcategoria: function getSubcategoria() {
+      this.selectmarca = 0;
+      this.selectmodelo = 0;
+      this.selectserie = 0; // this.catseleccionado = this.producto.category_id != null ? this.producto.category_id : 0;
+      // this.subcatseleccionado = this.producto.subcategory_id != null ? this.producto.subcategory_id : 0;
+      // console.log(this.selectserie)
+      // // this.cate = this.categoria.filter(item => item.id == this.producto.category_id);
+      // if (this.marcas.length)
+      // {
+      //     this.subcate = this.marcas.filter(item => (item.family_id && item.family_id == this.selectfamilia));
+      // }
+      // if (this.modelos.length)
+      // {
+      //     this.model = this.modelos.filter(item => (item.brand_id && item.brand_id == this.selectmarca));
+      // }
+      // if (!this.series == undefined)
+      // {
+      //     this.serie = this.series.filter(item => (item.model_id && item.model_id == this.selectmodelo));
+      // }
+      //
+      // if (this.subfamilias.length)
+      // {
+      //     this.subfami = this.subfamilias.filter(item => (item.family_id  == this.selectfamilia));
+      //     console.log(this.subfami)
+      //
+      // }
+      // this.subfami = this.subfamilias.filter(item => (item.family_id && item.family_id == this.selectfamilia));
+      // this.serie = this.series.filter(item => (item.model_id && item.model_id == this.selectmodelo));
+      // console.log(this.subcate)
+      // console.log(this.subfami)
+    },
+    getSubfamilia: function getSubfamilia() {// this.catseleccionado = this.producto.category_id != null ? this.producto.category_id : 0;
+      // this.subcatseleccionado = this.producto.subcategory_id != null ? this.producto.subcategory_id : 0;
+      // console.log(this.selectfamilia)
+      // this.cate = this.categoria.filter(item => item.id == this.producto.category_id);
+      // console.log(this.subcate)
+      // console.log(this.subfami)
+    },
+    addCapacidad: function addCapacidad() {
+      this.capacidad.push({
+        cc: '',
+        price: '',
+        price_offer: '',
+        offer: ''
+      });
+    },
+    deleteCapacidad: function deleteCapacidad(index) {
+      this.capacidad.splice(index, 1); //this.imageData[index]= '';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectedSerieComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SelectedSerieComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// register globally
+//Vue.component('multiselect', Multiselect)
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['subfamilias', 'serie', 'marcas', 'familias'],
+  // components: {
+  //     Multiselect,
+  //     Money
+  // },
+  data: function data() {
+    return {
+      // selectfamilia: this.producto && this.producto.category_id ? this.producto.category_id : {},
+      // selectmarca: this.producto && this.producto.brand_id ? this.producto.brand_id : {},
+      // selectmodelo: this.producto && this.producto.model_id ? this.producto.model_id : {},
+      // selectserie: this.producto && this.producto.serie_id ? this.producto.serie_id : {},
+      selectfamilia: this.serie.family ? this.serie.family : 0,
+      selectmarca: this.serie.brand ? this.serie.brand : 0,
+      selectmodelo: this.serie.model ? this.serie.model : 0,
+      selectserie: 0,
+      selectsubfamilia: this.serie.subfamily ? this.serie.subfamily : 0,
+      // selectserie: this.producto && this.producto.brand_id ? this.producto.brand_id : 1,
+      subcate: [],
+      subfami: [],
+      model: [],
+      // serie:[],
+      cate: [],
+      terminacion: [],
+      url: document.__API_URL
+    };
+  },
+  mounted: function mounted() {
+    console.log(this.familias);
+    console.log(this.serie); // console.log(this.selectsubfamilia)
+    // console.log(this.producto.subfamily === this.selectsubfamilia);
+    // this.getSubcategoria();
+    // this.getsubfamilia();
+    // this.getCapacidad()
+  },
+  computed: {},
+  methods: {
+    getSubcategoria: function getSubcategoria() {
+      // this.selectfamilia = this.serie.family
+      // this.selectmarca = 0;
+      // this.selectmodelo = 0;
+      console.log(this.selectmarca);
+      this.selectmarca = 0; // this.catseleccionado = this.producto.category_id != null ? this.producto.category_id : 0;
+      // this.subcatseleccionado = this.producto.subcategory_id != null ? this.producto.subcategory_id : 0;
+      // console.log(this.selectserie)
       // // this.cate = this.categoria.filter(item => item.id == this.producto.category_id);
       // if (this.marcas.length)
       // {
@@ -23258,7 +23707,8 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm.selectfamilia && _vm.selectfamilia.subfamily.length
+    Object.keys(_vm.selectfamilia).length &&
+    Object.keys(_vm.selectfamilia.subfamily).length
       ? _c("div", { staticClass: "col-md-6 mt-4" }, [
           _c("p", [_vm._v("Seleccionar Subfamilia")]),
           _vm._v(" "),
@@ -23300,7 +23750,9 @@ var render = function() {
               _c("input", {
                 staticClass: "d-none",
                 attrs: { type: "text", name: "subfamily_id" },
-                domProps: { value: _vm.selectsubfamilia.id }
+                domProps: {
+                  value: _vm.selectsubfamilia && _vm.selectsubfamilia.id
+                }
               })
             ],
             2
@@ -23308,7 +23760,8 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.selectfamilia && _vm.selectfamilia.brand.length
+    Object.keys(_vm.selectfamilia).length &&
+    Object.keys(_vm.selectfamilia.brand).length
       ? _c("div", { staticClass: "col-md-6 mt-4" }, [
           _c("p", [_vm._v("Seleccionar Marca")]),
           _vm._v(" "),
@@ -23350,7 +23803,7 @@ var render = function() {
               _c("input", {
                 staticClass: "d-none",
                 attrs: { type: "text", name: "marca_id" },
-                domProps: { value: _vm.selectmarca.id }
+                domProps: { value: _vm.selectmarca && _vm.selectmarca.id }
               })
             ],
             2
@@ -23400,7 +23853,7 @@ var render = function() {
               _c("input", {
                 staticClass: "d-none",
                 attrs: { type: "text", name: "modelo_id" },
-                domProps: { value: _vm.selectmodelo.id }
+                domProps: { value: _vm.selectmodelo && _vm.selectmodelo.id }
               })
             ],
             2
@@ -23412,7 +23865,7 @@ var render = function() {
     _vm.selectsubfamilia.serie &&
     _vm.selectsubfamilia.serie
       ? _c("div", { staticClass: "col-md-6 mt-4" }, [
-          _c("p", [_vm._v("Seleccionar Serie")]),
+          _c("p", [_vm._v("Seleccionar Serie para subcategoria")]),
           _vm._v(" "),
           _c(
             "select",
@@ -23426,7 +23879,6 @@ var render = function() {
                 }
               ],
               staticClass: "custom-select form-control",
-              attrs: { name: "serie_id" },
               on: {
                 change: function($event) {
                   var $$selectedVal = Array.prototype.filter
@@ -23443,12 +23895,875 @@ var render = function() {
                 }
               }
             },
-            _vm._l(_vm.selectsubfamilia.serie, function(item) {
-              return _c("option", { domProps: { value: item } }, [
-                _vm._v(_vm._s(item.text["es"]["title"]))
-              ])
-            }),
-            0
+            [
+              _vm._l(_vm.selectsubfamilia.serie, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "serie_id" },
+                domProps: { value: _vm.selectserie && _vm.selectserie.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.selectmodelo && _vm.selectmodelo.serie && _vm.selectmodelo.serie
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Serie para modelo")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectserie,
+                  expression: "selectserie"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectserie = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectmodelo.serie, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "serie_id" },
+                domProps: { value: _vm.selectserie && _vm.selectserie.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectSerieComponent.vue?vue&type=template&id=02d18d30&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SelectSerieComponent.vue?vue&type=template&id=02d18d30& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-6 mt-4" }, [
+      _c("p", [_vm._v("Seleccionar Familia")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectfamilia,
+              expression: "selectfamilia"
+            }
+          ],
+          staticClass: "custom-select form-control",
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selectfamilia = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              function($event) {
+                return _vm.getSubcategoria()
+              }
+            ]
+          }
+        },
+        [
+          _vm._l(_vm.familias, function(item) {
+            return _c("option", { domProps: { value: item } }, [
+              _vm._v(_vm._s(item.text["es"]["title"]))
+            ])
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "d-none",
+            attrs: { type: "text", name: "family_id" },
+            domProps: { value: _vm.selectfamilia.id }
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    Object.keys(_vm.selectfamilia).length &&
+    Object.keys(_vm.selectfamilia.subfamily).length
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Subfamilia")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectsubfamilia,
+                  expression: "selectsubfamilia"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectsubfamilia = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {
+                    return _vm.getSubcategoria()
+                  }
+                ]
+              }
+            },
+            [
+              _vm._l(_vm.selectfamilia.subfamily, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "subfamily_id" },
+                domProps: {
+                  value: _vm.selectsubfamilia && _vm.selectsubfamilia.id
+                }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    Object.keys(_vm.selectfamilia).length &&
+    Object.keys(_vm.selectfamilia.brand).length
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Marca")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectmarca,
+                  expression: "selectmarca"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectmarca = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectfamilia.brand, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "marca_id" },
+                domProps: { value: _vm.selectmarca && _vm.selectmarca.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.selectmarca && _vm.selectmarca.model
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Modelo")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectmodelo,
+                  expression: "selectmodelo"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectmodelo = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectmarca.model, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "modelo_id" },
+                domProps: { value: _vm.selectmodelo && _vm.selectmodelo.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectedComponent.vue?vue&type=template&id=28529672&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SelectedComponent.vue?vue&type=template&id=28529672& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-6 mt-4" }, [
+      _c("p", [_vm._v("Seleccionar Familia")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectfamilia,
+              expression: "selectfamilia"
+            }
+          ],
+          staticClass: "custom-select form-control",
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selectfamilia = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              function($event) {
+                return _vm.getSubcategoria()
+              }
+            ]
+          }
+        },
+        [
+          _vm._l(_vm.familias, function(item) {
+            return _c("option", { domProps: { value: item } }, [
+              _vm._v(_vm._s(item.text["es"]["title"]))
+            ])
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "d-none",
+            attrs: { type: "text", name: "family_id" },
+            domProps: { value: _vm.selectfamilia.id }
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    Object.keys(_vm.selectfamilia).length &&
+    Object.keys(_vm.selectfamilia.subfamily).length
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Subfamilia")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectsubfamilia,
+                  expression: "selectsubfamilia"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectsubfamilia = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectfamilia.subfamily, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "subfamily_id" },
+                domProps: {
+                  value: _vm.selectsubfamilia && _vm.selectsubfamilia.id
+                }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    Object.keys(_vm.selectfamilia).length &&
+    Object.keys(_vm.selectfamilia.brand).length
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Marca")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectmarca,
+                  expression: "selectmarca"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectmarca = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectfamilia.brand, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "marca_id" },
+                domProps: { value: _vm.selectmarca && _vm.selectmarca.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.selectmarca && _vm.selectmarca.model
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Modelo")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectmodelo,
+                  expression: "selectmodelo"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectmodelo = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectmarca.model, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "modelo_id" },
+                domProps: { value: _vm.selectmodelo && _vm.selectmodelo.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.selectsubfamilia &&
+    _vm.selectsubfamilia.serie &&
+    _vm.selectsubfamilia.serie
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Serie para subcategoria")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectseriesub,
+                  expression: "selectseriesub"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectseriesub = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectsubfamilia.serie, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "serie_id" },
+                domProps: { value: _vm.selectseriesub && _vm.selectseriesub.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.selectmodelo && _vm.selectmodelo.serie && _vm.selectmodelo.serie
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Serie para modelo")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectserie,
+                  expression: "selectserie"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectserie = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectmodelo.serie, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "serie_id" },
+                domProps: { value: _vm.selectserie && _vm.selectserie.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectedSerieComponent.vue?vue&type=template&id=65b5b6f2&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SelectedSerieComponent.vue?vue&type=template&id=65b5b6f2& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-6 mt-4" }, [
+      _c("p", [_vm._v("Seleccionar Familia")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectfamilia,
+              expression: "selectfamilia"
+            }
+          ],
+          staticClass: "custom-select form-control",
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selectfamilia = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              function($event) {
+                return _vm.getSubcategoria()
+              }
+            ]
+          }
+        },
+        [
+          _vm._l(_vm.familias, function(item) {
+            return _c("option", { domProps: { value: item } }, [
+              _vm._v(_vm._s(item.text["es"]["title"]))
+            ])
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "d-none",
+            attrs: { type: "text", name: "family_id" },
+            domProps: { value: _vm.selectfamilia.id }
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    Object.keys(_vm.selectfamilia).length &&
+    Object.keys(_vm.selectfamilia.subfamily).length
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Subfamilia")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectsubfamilia,
+                  expression: "selectsubfamilia"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectsubfamilia = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {
+                    return _vm.getSubcategoria()
+                  }
+                ]
+              }
+            },
+            [
+              _vm._l(_vm.selectfamilia.subfamily, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "subfamily_id" },
+                domProps: {
+                  value: _vm.selectsubfamilia && _vm.selectsubfamilia.id
+                }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    Object.keys(_vm.selectfamilia).length &&
+    Object.keys(_vm.selectfamilia.brand).length
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Marca")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectmarca,
+                  expression: "selectmarca"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectmarca = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectfamilia.brand, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "marca_id" },
+                domProps: { value: _vm.selectmarca && _vm.selectmarca.id }
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.selectmarca && _vm.selectmarca.model
+      ? _c("div", { staticClass: "col-md-6 mt-4" }, [
+          _c("p", [_vm._v("Seleccionar Modelo")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectmodelo,
+                  expression: "selectmodelo"
+                }
+              ],
+              staticClass: "custom-select form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectmodelo = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _vm._l(_vm.selectmarca.model, function(item) {
+                return _c("option", { domProps: { value: item } }, [
+                  _vm._v(_vm._s(item.text["es"]["title"]))
+                ])
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "d-none",
+                attrs: { type: "text", name: "modelo_id" },
+                domProps: { value: _vm.selectmodelo && _vm.selectmodelo.id }
+              })
+            ],
+            2
           )
         ])
       : _vm._e()
@@ -38897,6 +40212,9 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('gallery-component', __webpack_require__(/*! ./components/GalleryComponent.vue */ "./resources/js/components/GalleryComponent.vue")["default"]);
 Vue.component('image-component', __webpack_require__(/*! ./components/ImageComponent.vue */ "./resources/js/components/ImageComponent.vue")["default"]);
 Vue.component('select-component', __webpack_require__(/*! ./components/SelectComponent.vue */ "./resources/js/components/SelectComponent.vue")["default"]);
+Vue.component('select-serie', __webpack_require__(/*! ./components/SelectSerieComponent.vue */ "./resources/js/components/SelectSerieComponent.vue")["default"]);
+Vue.component('selected-serie-component', __webpack_require__(/*! ./components/SelectedSerieComponent.vue */ "./resources/js/components/SelectedSerieComponent.vue")["default"]);
+Vue.component('selected-component', __webpack_require__(/*! ./components/SelectedComponent.vue */ "./resources/js/components/SelectedComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -39273,6 +40591,213 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectComponent_vue_vue_type_template_id_54715746___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectComponent_vue_vue_type_template_id_54715746___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectSerieComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/SelectSerieComponent.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SelectSerieComponent_vue_vue_type_template_id_02d18d30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectSerieComponent.vue?vue&type=template&id=02d18d30& */ "./resources/js/components/SelectSerieComponent.vue?vue&type=template&id=02d18d30&");
+/* harmony import */ var _SelectSerieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectSerieComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SelectSerieComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SelectSerieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SelectSerieComponent_vue_vue_type_template_id_02d18d30___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SelectSerieComponent_vue_vue_type_template_id_02d18d30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SelectSerieComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectSerieComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/SelectSerieComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectSerieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SelectSerieComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectSerieComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectSerieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectSerieComponent.vue?vue&type=template&id=02d18d30&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/SelectSerieComponent.vue?vue&type=template&id=02d18d30& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectSerieComponent_vue_vue_type_template_id_02d18d30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SelectSerieComponent.vue?vue&type=template&id=02d18d30& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectSerieComponent.vue?vue&type=template&id=02d18d30&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectSerieComponent_vue_vue_type_template_id_02d18d30___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectSerieComponent_vue_vue_type_template_id_02d18d30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectedComponent.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/SelectedComponent.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SelectedComponent_vue_vue_type_template_id_28529672___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectedComponent.vue?vue&type=template&id=28529672& */ "./resources/js/components/SelectedComponent.vue?vue&type=template&id=28529672&");
+/* harmony import */ var _SelectedComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectedComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SelectedComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SelectedComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SelectedComponent_vue_vue_type_template_id_28529672___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SelectedComponent_vue_vue_type_template_id_28529672___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SelectedComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectedComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/SelectedComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SelectedComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectedComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectedComponent.vue?vue&type=template&id=28529672&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/SelectedComponent.vue?vue&type=template&id=28529672& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedComponent_vue_vue_type_template_id_28529672___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SelectedComponent.vue?vue&type=template&id=28529672& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectedComponent.vue?vue&type=template&id=28529672&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedComponent_vue_vue_type_template_id_28529672___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedComponent_vue_vue_type_template_id_28529672___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectedSerieComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/SelectedSerieComponent.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SelectedSerieComponent_vue_vue_type_template_id_65b5b6f2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectedSerieComponent.vue?vue&type=template&id=65b5b6f2& */ "./resources/js/components/SelectedSerieComponent.vue?vue&type=template&id=65b5b6f2&");
+/* harmony import */ var _SelectedSerieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectedSerieComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SelectedSerieComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SelectedSerieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SelectedSerieComponent_vue_vue_type_template_id_65b5b6f2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SelectedSerieComponent_vue_vue_type_template_id_65b5b6f2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SelectedSerieComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectedSerieComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/SelectedSerieComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedSerieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SelectedSerieComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectedSerieComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedSerieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectedSerieComponent.vue?vue&type=template&id=65b5b6f2&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/SelectedSerieComponent.vue?vue&type=template&id=65b5b6f2& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedSerieComponent_vue_vue_type_template_id_65b5b6f2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SelectedSerieComponent.vue?vue&type=template&id=65b5b6f2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SelectedSerieComponent.vue?vue&type=template&id=65b5b6f2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedSerieComponent_vue_vue_type_template_id_65b5b6f2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectedSerieComponent_vue_vue_type_template_id_65b5b6f2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

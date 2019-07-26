@@ -9,7 +9,7 @@
         </div>
         <div v-if="Object.keys(selectfamilia).length && Object.keys(selectfamilia.subfamily).length" class="col-md-6 mt-4">
             <p>Seleccionar Subfamilia</p>
-            <select class="custom-select form-control" v-model="selectsubfamilia"  >
+            <select class="custom-select form-control" v-model="selectsubfamilia" @change="getSubcategoria()">
                 <option v-for="item in selectfamilia.subfamily" :value="item">{{ item.text['es']['title'] }}</option>
                 <input type="text" class="d-none" name="subfamily_id" :value="selectsubfamilia && selectsubfamilia.id">
             </select>
@@ -28,21 +28,13 @@
                 <input type="text" class="d-none" name="modelo_id" :value="selectmodelo && selectmodelo.id">
             </select>
         </div>
-        <div v-if="selectsubfamilia && selectsubfamilia.serie && selectsubfamilia.serie" class="col-md-6 mt-4">
-            <p>Seleccionar Serie para subcategoria</p>
-            <select class="custom-select form-control" v-model="selectserie">
-                <option v-for="item in selectsubfamilia.serie" :value="item">{{ item.text['es']['title'] }}</option>
-                <input type="text" class="d-none" name="serie_id" :value="selectserie && selectserie.id">
-            </select>
-        </div>
-
-        <div v-if="selectmodelo && selectmodelo.serie && selectmodelo.serie" class="col-md-6 mt-4">
-            <p>Seleccionar Serie para modelo</p>
-            <select class="custom-select form-control" v-model="selectserie"  >
-                <option v-for="item in selectmodelo.serie" :value="item">{{ item.text['es']['title'] }}</option>
-                <input type="text" class="d-none" name="serie_id" :value="selectserie && selectserie.id">
-            </select>
-        </div>
+        <!--<div v-if="selectsubfamilia && selectsubfamilia.serie && selectsubfamilia.serie" class="col-md-6 mt-4">-->
+            <!--<p>Seleccionar Serie</p>-->
+            <!--<select class="custom-select form-control" v-model="selectserie" @change="getSubcategoria()">-->
+                <!--<option v-for="item in selectsubfamilia.serie" :value="item">{{ item.text['es']['title'] }}</option>-->
+                <!--<input type="text" class="d-none" name="serie_id" :value="selectserie.id">-->
+            <!--</select>-->
+        <!--</div>-->
     </div>
 </template>
 
@@ -51,7 +43,7 @@
     // register globally
     //Vue.component('multiselect', Multiselect)
     export default {
-        props:['subfamilias','producto','marcas','familias','modelos','series'],
+        props:['subfamilias','serie','marcas','familias'],
         // components: {
         //     Multiselect,
         //     Money
@@ -62,16 +54,16 @@
               // selectmarca: this.producto && this.producto.brand_id ? this.producto.brand_id : {},
               // selectmodelo: this.producto && this.producto.model_id ? this.producto.model_id : {},
               // selectserie: this.producto && this.producto.serie_id ? this.producto.serie_id : {},
-              selectfamilia: this.producto && this.producto.family ? this.producto.family : {},
-              selectmarca: 0,
-              selectmodelo: 0,
-              selectserie: this.producto && this.producto.serie ? this.producto.serie : {},
-              selectsubfamilia: this.producto && this.producto.subfamily ? this.producto.subfamily : {},
+              selectfamilia: this.serie.family ? this.serie.family : 0,
+              selectmarca: this.serie.brand ? this.serie.brand : 0,
+              selectmodelo: this.serie.model ? this.serie.model : 0,
+              selectserie: 0,
+              selectsubfamilia: this.serie.subfamily ? this.serie.subfamily : 0,
               // selectserie: this.producto && this.producto.brand_id ? this.producto.brand_id : 1,
               subcate:[],
               subfami:[],
               model:[],
-              serie:[],
+              // serie:[],
               cate:[],
               terminacion:[],
 
@@ -79,9 +71,9 @@
           }
         },
         mounted() {
-            // console.log(this.selectsubfamilia)
-            // console.log(this.familias)
             console.log(this.familias)
+            console.log(this.serie)
+            // console.log(this.selectsubfamilia)
             // console.log(this.producto.subfamily === this.selectsubfamilia);
             // this.getSubcategoria();
             // this.getsubfamilia();
@@ -92,9 +84,11 @@
         },
         methods: {
             getSubcategoria(){
+                // this.selectfamilia = this.serie.family
+                // this.selectmarca = 0;
+                // this.selectmodelo = 0;
+                console.log(this.selectmarca)
                 this.selectmarca = 0;
-                this.selectmodelo = 0;
-                this.selectserie = 0;
                 // this.catseleccionado = this.producto.category_id != null ? this.producto.category_id : 0;
                 // this.subcatseleccionado = this.producto.subcategory_id != null ? this.producto.subcategory_id : 0;
                 // console.log(this.selectserie)

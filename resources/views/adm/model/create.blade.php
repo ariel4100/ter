@@ -18,17 +18,28 @@
                     {{--</div>--}}
                 </div>
             @endforeach
-            <div class="col-md-12" style="margin-top: 1.5rem">
-                <select-component :familias="{{ json_encode($familias) }}" :marcas="{{ json_encode($marcas) }}"></select-component>
-                {{--<select name="family_id" id="" class="form-control">--}}
-                    {{--<option value="" selected disabled>Seleccionar Familia</option>--}}
-                    {{--@forelse($familias as $c)--}}
-                        {{--<option value="{{ $c->id }}">{!! $c->text['es']['title'] ?? '' !!}</option>--}}
-                    {{--@empty--}}
-                        {{--<option value="" disabled >No hay categorias</option>--}}
-                    {{--@endforelse--}}
-                {{--</select>--}}
+            <div class="col-md-6" >
+                <div class="form-group">
+                    <label for="">Seleccionar familia</label>
+                    <select name="family_id" id="" class="custom-select">
+                        <option value="{{ $familias->id }}">{!! $familias->text['es']['title'] ?? '' !!}</option>
+                    </select>
+                </div>
             </div>
+            <div class="col-md-6" >
+                {{--<select-component :familias="{{ json_encode($familias) }}" :marcas="{{ json_encode($marcas) }}"></select-component>--}}
+                <div class="form-group">
+                    <label for="">Seleccionar Marcas</label>
+                    <select name="marca_id" id="" class="custom-select">
+                        @forelse($marcas as $c)
+                            <option value="{{ $c->id }}">{!! $c->text['es']['title'] ?? '' !!}</option>
+                        @empty
+                            <option value="" disabled >No hay Marcas</option>
+                        @endforelse
+                    </select>
+                </div>
+            </div>
+
             <div class="md-form col-md-6 mt-5">
                 <input type="text" id="order" name="order" placeholder="Orden" class="form-control" >
             </div>
