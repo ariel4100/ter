@@ -45,12 +45,12 @@
                         </li>
                         <li class="list-group-item border-0 d-flex align-items-center">
                             <i class="material-icons ter-color mr-3">phone_in_talk</i>
-                            <div class="">
+                            <div class="d-flex flex-column">
                                 <p class="m-0 text-uppercase font-weight-bold">{{ __('Telefono') }}</p>
-                                <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}" class="text-muted">(54-11) 4717-2220</a><br>
-                                <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}" class="text-muted">(54-11) 4717-1656</a><br>
-                                <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}" class="text-muted">(54-11) 4717-1170</a><br>
-                                <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}" class="text-muted">(54-11) 4836-1863</a>
+                                <a href="tel:{!! $contacto->text['es']{'telefono_1'} ?? '' !!}">{!! $contacto->text['es']{'telefono_1'} ?? '' !!}</a>
+                                <a href="tel:{!! $contacto->text['es']{'telefono_2'} ?? '' !!}">{!! $contacto->text['es']{'telefono_2'} ?? '' !!}</a>
+                                <a href="tel:{!! $contacto->text['es']{'telefono_3'} ?? '' !!}">{!! $contacto->text['es']{'telefono_3'} ?? '' !!}</a>
+                                <a href="tel:{!! $contacto->text['es']{'telefono_4'} ?? '' !!}">{!! $contacto->text['es']{'telefono_4'} ?? '' !!}</a>
                             </div>
                         </li>
                         <li class="list-group-item border-0 d-flex align-items-center">
@@ -65,7 +65,7 @@
             </div>
             <div class="col-md-8">
                 {{--<hr class="baires-fondo" style="width: 20%">--}}
-                <form class="form-row" action=" " method="post">
+                <form class="form-row" action="{{ route('contacto.mail') }}" method="post">
                     @csrf
                     <div class="md-form my-2 col-md-6">
                         <input type="text" class="form-control" required placeholder="Nombre" name="nombre">

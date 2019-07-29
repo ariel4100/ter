@@ -20,8 +20,14 @@
                         <textarea class="md-textarea form-control ckeditor" name="{{$key}}[text]" rows="3">{!! $contenido[$key]['text'] ?? '' !!}</textarea>
                     </div>
                     <div class="md-form">
+                        <input type="text" name="{{$key}}[title_car]" placeholder="Titulo - {{ $lang['name'] }}" class="form-control" value="{{ $producto->text[$key]['title_car'] ?? '' }}">
+                    </div>
+                    <div class="md-form">
                         <p class="mb-0">Caracteristicas - {{ $lang['name'] }}</p>
-                        <textarea class="md-textarea form-control ckeditor" name="{{$key}}[caracteristica]" rows="3">{!! $contenido[$key]['caracteristica'] ?? '' !!}</textarea>
+                        <textarea class="md-textarea form-control ckeditor" name="{{$key}}[caracteristica]" rows="3">{!! $producto->text[$key]['caracteristica'] ?? '' !!}</textarea>
+                    </div>
+                    <div class="md-form">
+                        <input type="text" name="{{$key}}[relacionados]" placeholder="Titulo - {{ $lang['name'] }}" class="form-control" value="{{ $producto->text[$key]['relacionados'] ?? '' }}">
                     </div>
                 </div>
             @endforeach
@@ -36,9 +42,12 @@
                     {{--@endforelse--}}
                 {{--</select>--}}
             </div>
+            <related-component :related="{{ json_encode($productos) }}"></related-component>
             <div class="md-form col-md-6 mt-5">
                 <input type="text" id="order" name="order" placeholder="Orden" class="form-control" >
             </div>
+            <gallery-component :name="'file'"  title="Archivos"></gallery-component>
+            <gallery-component :name="'imagenes'"  title="Planos"></gallery-component>
             <gallery-component :name="'gallery'"  title="Galeria de imagenes"></gallery-component>
             <div class="col-md-12 my-4 text-right">
                 <button type="submit" class="btn btn-success">Guardar</button>

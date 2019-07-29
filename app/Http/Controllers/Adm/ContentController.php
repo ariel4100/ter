@@ -132,7 +132,7 @@ class ContentController extends Controller
         //dd();
         $contenido->section = $section;
         $contenido->text = $request->only('es','en');
-        $contenido->image = ['imagenes' => $gallery, 'maquinas' => $maquinas, 'laboratorios' => $laboratorios, 'marcas' => $marcas, 'servicios' => $servicios, 'archivos' => $archivos];
+        $contenido->image = ['imagenes' => $gallery, 'maquinas' => $maquinas, 'laboratorios' => $laboratorios, 'marcas' => $marcas, 'servicios' => $servicios, 'archivos' => $archivos,'video' => $request->gallery];
         // $contenido->file = ['archivos' => $archivos];
         $contenido->save();
 //        dd($contenido);

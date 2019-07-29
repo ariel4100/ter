@@ -33,11 +33,13 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('components.card', 'card');
 
         $logos = Content::where('section','logos')->first();
+        $redes = Content::where('section','redes')->first();
         $contacto = Content::where('section','contacto')->first();
         //dd($logos->image['imagenes']);
         $logos = $logos->image['imagenes'];
         //dd($logos[0]['image']);
         View::share('logos', $logos);
         View::share('contacto', $contacto);
+        View::share('redes', $redes);
     }
 }

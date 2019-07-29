@@ -6,10 +6,9 @@
             <div class="col-md-6">
                 <div class="bg-white p-5 rounded">
 
-<!--{{ asset(isset($data->image) ? asset($data->image) : null) }}-->
-{{--                                        @dd($logos[1]['image'])--}}
+                                        {{--@dd($logos[1]['image'])--}}
                     <div class="text-center">
-                        <img src="{{ asset('uploads/'.$logos[0]['image']) }}" alt="" class="img-fluid">
+                        <img src="{{ asset($logos[0]['image']) }}" alt="" class="img-fluid">
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

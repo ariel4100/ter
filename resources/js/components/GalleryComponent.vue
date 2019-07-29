@@ -49,7 +49,7 @@
             draggable,
         },
         mounted() {
-            console.log(this.name)
+            // console.log(this.name)
             // this.getFamily();
         },
         methods:{

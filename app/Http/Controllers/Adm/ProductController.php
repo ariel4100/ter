@@ -34,8 +34,9 @@ class ProductController extends Controller
         $modelos = Models::orderBy('order')->get();
         $series = Serie::orderBy('order')->get();
         $subfamilias = Subfamily::orderBy('order')->get();
+        $productos = Product::orderBy('order')->get();
 //        dd($familias);
-        return view('adm.product.create',compact('familias','marcas','modelos','series','subfamilias'));
+        return view('adm.product.create',compact('familias','marcas','modelos','series','subfamilias','productos'));
     }
 
     public function store(Request $request)
@@ -43,6 +44,7 @@ class ProductController extends Controller
 //        dd($request->all());
         $imagenes = $request->imagenes;
         $gallery = $request->gallery;
+        $archivos = $request->file;
 
         if (isset($gallery))
         {
@@ -62,9 +64,18 @@ class ProductController extends Controller
             }
         }
 
+        if (isset($archivos))
+        {
+            foreach ($archivos as $k=>$item)
+            {
+                $path = $item['image']->store('uploads/productos');
+                $archivos[$k]['image'] = $path;
+            }
+        }
+
         $product = new Product();
         $product->text = $request->only('es','en');
-        $product->image = ['gallery' => $gallery,'imagenes' => $imagenes];
+        $product->image = ['gallery' => $gallery,'imagenes' => $imagenes,'archivos' => $archivos];
         $product->order = $request->order;
         $product->family_id = $request->family_id;
         $product->subfamily_id = $request->subfamily_id;
@@ -73,7 +84,9 @@ class ProductController extends Controller
         $product->serie_id = $request->serie_id ;
         $product->save();
 
-        return back()->with('status','Serie creadó correctamente');
+        $product->related()->sync($request->related_id);
+
+        return back()->with('status','Producto creadó correctamente');
     }
 
     public function edit($id)
@@ -117,15 +130,18 @@ class ProductController extends Controller
         $marcas = Brand::orderBy('order')->get();
         $modelos = Models::orderBy('order')->get();
         $series = Serie::orderBy('order')->get();
-        return view('adm.product.edit',compact('producto','familias','marcas','modelos','series','subfamilias'));
+        $productos = Product::orderBy('order')->get();
+
+        return view('adm.product.edit',compact('producto','familias','marcas','modelos','series','subfamilias','productos'));
     }
 
     public function update(Request $request, $id)
     {
 //        dd($request->all());
-
-        $gallery = $request->gallery;
         $imagenes = $request->imagenes;
+        $gallery = $request->gallery;
+        $archivos = $request->file;
+
         $producto = Product::find($id);
 
         if (isset($gallery))
@@ -139,8 +155,8 @@ class ProductController extends Controller
                     $gallery[$k]['image'] = $producto->image['gallery'][$k]['image'];
                 }else{
                     //dd($item['image']);
-                    $path = $item['image']->store('gallery/productos');
-                    $gallery[$k]['image'] = "uploads/{$path}";
+                    $path = $item['image']->store('uploads/productos');
+                    $gallery[$k]['image'] = $path;
                 }
             }
         }
@@ -156,14 +172,31 @@ class ProductController extends Controller
                     $imagenes[$k]['image'] = $producto->image['imagenes'][$k]['image'];
                 }else{
                     //dd($item['image']);
-                    $path = $item['image']->store("gallery/productos");
-                    $imagenes[$k]['image'] = "uploads/{$path}";
+                    $path = $item['image']->store("uploads/productos");
+                    $imagenes[$k]['image'] = $path;
+                }
+            }
+        }
+
+        if (isset($archivos))
+        {
+            //dd($gallery);
+            foreach ($archivos as $k => $item) {
+                //dd($item['image']);
+                if (is_string($item['image']))
+                {
+                    //dd($item['image']);
+                    $archivos[$k]['image'] = $producto->image['archivos'][$k]['image'];
+                }else{
+                    //dd($item['image']);
+                    $path = $item['image']->store('uploads/productos');
+                    $archivos[$k]['image'] = $path;
                 }
             }
         }
         //dd($gallery);
         $producto->text = $request->only('es','en');
-        $producto->image = ['gallery' => $gallery,'imagenes' => $imagenes];
+        $producto->image = ['gallery' => $gallery,'imagenes' => $imagenes,'archivos' => $archivos];
         $producto->order = $request->order;
         $producto->family_id = $request->family_id;
         $producto->subfamily_id = $request->subfamilia_id;
@@ -172,7 +205,9 @@ class ProductController extends Controller
         $producto->serie_id = $request->serie_id ;
         $producto->update();
 
-        return back()->with('status','Serie actualizado correctamente');
+        $producto->related()->sync($request->related_id);
+
+        return back()->with('status','Producto actualizado correctamente');
     }
 
     public function delete($id)

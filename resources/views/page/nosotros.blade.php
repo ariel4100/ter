@@ -16,12 +16,12 @@
         </div>
         <div class="row mt-5">
             <div class="col-md-6">
-
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/{{ $imagenes['video'][0]['video'] ?? '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            {{--<div class="col-md-6 d-flex align-items-center">--}}
-                {{--<h2 class="" style="color: #D33538;">Seguinos en nuestro--}}
-                    {{--canal de YouTube</h2>--}}
-            {{--</div>--}}
+            <div class="col-md-6 d-flex align-items-center">
+                <h2 class="" style="color: #D33538;">Seguinos en nuestro
+                    canal de YouTube</h2>
+            </div>
         </div>
     </div>
 

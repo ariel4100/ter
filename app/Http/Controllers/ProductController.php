@@ -20,9 +20,16 @@ class ProductController extends Controller
     }
 
     public function marcas($id){
+//        dd($id);
         $marcas = Brand::where('family_id',$id)->orderBy('order')->get();
         $subfamilias = Subfamily::where('family_id',$id)->orderBy('order')->get();
-        return view('page.productos.marcas',compact('marcas','subfamilias'));
+        if ($id == 3 || $id == 4)
+        {
+            $productos = Product::where('family_id',$id)->orderBy('order')->get();
+        }else{
+            $productos = [];
+        }
+        return view('page.productos.marcas',compact('marcas','subfamilias','productos'));
     }
 
     public function modelos($id){
@@ -63,18 +70,21 @@ class ProductController extends Controller
         $productos = Product::where('serie_id',$id)->orderBy('order')->get();
         $subfamilias = Subfamily::orderBy('order')->get();
 
+
 //        dd($productos);
         return view('page.productos.productossub',compact('productos','subfamilias'));
     }
 
     public function productosub($id){
         $producto = Product::find($id);
-        $productos = Product::where('serie_id',$id)->orderBy('order')->get();
+        $text = $producto->text[App::getLocale()];
+        $subfamilias = Subfamily::orderBy('order')->get();
+        $familias = Family::orderBy('order')->get();
 //        $modelos = Models::orderBy('order')->get();
 //        $marcas = Brand::orderBy('order')->get();
 //        $series = Serie::orderBy('order')->get();
-        dd($productos);
-        return view('page.productos.productossub',compact('productos','modelos','marcas','series','producto'));
+//        dd($productos);
+        return view('page.productos.productosub',compact('subfamilias','producto','text','familias'));
     }
 
     public function productos($id){
@@ -91,7 +101,8 @@ class ProductController extends Controller
         $marcas = Brand::orderBy('order')->get();
 
         $productos = Serie::orderBy('order')->get();
-        dd($producto);
+//        dd($producto);
         return view('page.productos.producto',compact('productos','marcas','producto','text'));
     }
+
 }

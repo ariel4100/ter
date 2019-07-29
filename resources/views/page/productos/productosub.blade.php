@@ -12,7 +12,12 @@
     <div class="container my-5">
         <div class="row">
             {{--@dd($producto)--}}
-            @include('page.partials.botonera')
+            {{--@dd($producto->family->id == 3 || $producto->family->id == 4)--}}
+            @if($producto->family->id == 3 || $producto->family->id == 4)
+                @include('page.partials.botonera3')
+            @else
+                @include('page.partials.botonera2')
+            @endif
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-12">
@@ -22,9 +27,12 @@
                     </div>
                 </div>
                 <div class="row ">
+{{--                    @dd($producto->image['archivos'][0]['image'])--}}
                     <div class="col-md-12 text-center">
-                        <a href="" class="btn rounded-circle text-white rounded-pill ter-fondo">FICHA TÉCNICA</a>
-                        <a href="" class="btn rounded-circle text-white rounded-pill ter-fondo">CONSULTAR</a>
+                        @if(isset($producto->image['archivos']) )
+                        <a href="{{ asset($producto->image['archivos'][0]['image']) }}" download class="btn rounded-circle text-white rounded-pill ter-fondo">FICHA TÉCNICA</a>
+                        @endif
+                        <a href="{{ route('contacto') }}" class="btn rounded-circle text-white rounded-pill ter-fondo">CONSULTAR</a>
                     </div>
                 </div>
                 <div class="row my-5">
@@ -36,7 +44,7 @@
                         @endgallery
                     </div>
                     <div class="col-md-6 text-center">
-                        @forelse($producto->image['imagenes'] as $item)
+                        @forelse($producto->image['imagenes'] ?? [] as $item)
                             <img src="{{ asset($item['image'])  ?? 'uploads/no-img.png'}}" alt="" class="img-fluid mt-4">
                         @empty
                         @endforelse
@@ -44,13 +52,36 @@
                 </div>
                 <div class="row my-5">
                     <div class="col-md-12">
-                        <p class="text-uppercase p-2 ter-color" style="background-color: #F9F9F9">{!! $text['title_car'] ?? '' !!}</p>
+                        <p class="text-uppercase p-2 ter-color font-weight-bold" style="background-color: #F9F9F9">{!! $text['title_car'] ?? '' !!}</p>
                     </div>
                     <div class="col-md-12 ">
                         {!! $text['caracteristica'] ?? '' !!}
                     </div>
                     <div class="col-md-12">
-                        <p class="p-2 border-bottom">{!! $text['relacionados'] ?? '' !!}</p>
+                        <div class="border-bottom d-flex justify-content-between align-items-center">
+                            <p class="m-0 py-2">{!! $text['relacionados'] ?? '' !!}</p>
+                            <span class="ter-color">+</span>
+                        </div>
+                        <div class="row">
+                            @foreach($producto->related as $item)
+                                {{--@dd($item)--}}
+                            <div class="col-md-4 mt-4">
+                                <div class="">
+                                    <div class="text-center">
+                                        <img class="img-fluid" src="{{ asset($item->image['gallery'][0]['image'] ?? 'uploads/no-img.png') }}" alt="Card image cap">
+                                    </div>
+                                    <div class="p-3 bg-white">
+                                        <h4 class="ter-color">
+                                            {!! $item->text[App::getLocale()]{'title'} ?? '' !!}
+                                        </h4>
+                                        <p class="">
+                                            {!! $item->text[App::getLocale()]{'subtitle'} ?? '' !!}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

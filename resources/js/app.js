@@ -26,6 +26,8 @@ Vue.component('select-component', require('./components/SelectComponent.vue').de
 Vue.component('select-serie', require('./components/SelectSerieComponent.vue').default);
 Vue.component('selected-serie-component', require('./components/SelectedSerieComponent.vue').default);
 Vue.component('selected-component', require('./components/SelectedComponent.vue').default);
+Vue.component('related-component', require('./components/RelatedComponent.vue').default);
+Vue.component('video-component', require('./components/VideoComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

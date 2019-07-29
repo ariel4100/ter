@@ -29,7 +29,7 @@ class NewController extends Controller
         if (isset($gallery))
         {
             foreach ($gallery as $k => $item) {
-                $path = $item['image']->store('gallery/noticia');
+                $path = $item['image']->store('uploads/noticia');
                 $gallery[$k]['image'] = $path;
             }
         }
@@ -72,7 +72,7 @@ class NewController extends Controller
                     $gallery[$k]['image'] = $noticia->image[$k]['image'];
                 }else{
                     //dd($item['image']);
-                    $path = $item['image']->store('gallery/noticia');
+                    $path = $item['image']->store('uploads/noticia');
                     $gallery[$k]['image'] = $path;
                 }
             }

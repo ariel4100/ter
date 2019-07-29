@@ -18,7 +18,8 @@
 
                     @forelse ($subfamilias as $item)
                         <tr>
-                            <td><img src="{{  asset(isset($item->image) ? $item->image[0]{'image'} : 'uploads/no-img.png') }}" style="width: 100px"></td>
+{{--                            @dd($item)--}}
+                            <td><img src="{{  asset( $item->image[0]{'image'} ?? 'uploads/no-img.png') }}" style="width: 100px"></td>
                             <td>{{ $item->text['es']{'title'} ?? '' }}</td>
                             <td>{{ $item->order }}</td>
                             <td>

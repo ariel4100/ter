@@ -126,7 +126,7 @@
             </a>
             <ul class="collapse list-group list-group-flush " id="Logos">
                 <li><a href="{{ route('contenido.index', ['seccion' => 'logos']) }}"><i class="fas fa-chevron-right px-4"></i>Logos</a></li>
-                {{--<li><a href="{{ route('contenido.index', ['seccion' => 'redes', 'tipo' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Redes Sociales</a></li>--}}
+                <li><a href="{{ route('contenido.index', ['seccion' => 'redes']) }}"><i class="fas fa-chevron-right px-4"></i>Redes Sociales</a></li>
                 <li><a href="{{ route('contenido.index', ['seccion' => 'condiciones']) }}"><i class="fas fa-chevron-right px-4"></i>Terminos y Condiciones</a></li>
                 <li><a href="{{ route('metadatos.index') }}"><i class="fas fa-chevron-right px-4"></i>Metadatos</a></li>
                 <li><a href="{{ route('usuario.index') }}"><i class="fas fa-chevron-right px-4"></i>Usuarios</a></li>
@@ -150,7 +150,7 @@
             <ul class="collapse list-group list-group-flush " id="Redes">
                 <li><a href=" "><i class="fas fa-chevron-right px-4"></i>Editar Redes Sociales</a></li>
             </ul>
-        </li>---->
+        </li>
         <!---METADATOS
         <li class="">
             <a href="#Metadatos" data-toggle="collapse" aria-expanded="false" class="d-flex">

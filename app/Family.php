@@ -26,6 +26,11 @@ class Family extends Model
     {
         return $this->hasMany('App\Subfamily');
     }
+
+    public function product()
+    {
+        return $this->hasMany('App\Product');
+    }
 //
 //    public function model()
 //    {

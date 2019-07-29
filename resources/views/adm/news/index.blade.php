@@ -19,7 +19,7 @@
                     @forelse ($novedades as $item)
                         <tr>
                             {{--@dd($item->image[0])--}}
-                                                   <td><img src="{{ asset($item->image[0]{'image'} ? 'uploads/'.$item->image[0]{'image'} : 'uploads/no-img.png') }}" style="width: 100px"></td>
+                            <td><img src="{{ asset( $item->image[0]{'image'} ?? 'uploads/no-img.png') }}" style="width: 100px"></td>
                             <td>{{ $item->text['es']['title'] ?? '' }}</td>
                             <td>{{ $item->category->text['es']['title'] ?? '' }}</td>
                             <td>{{ $item->order }}</td>

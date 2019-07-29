@@ -64,6 +64,7 @@
                     </div>
                 @endforeach
                     <gallery-component :name="'imagenes'" :title="'Imagenes'" :label="'Imagen'" :galeria="{{ json_encode($imagenes['imagenes']) }}"></gallery-component>
+                    <video-component  :galeria="{{ json_encode($imagenes['video']) }}"></video-component>
 
             @endif
             @if($section == 'calidad')
@@ -222,26 +223,34 @@
                         </div>
                     </div>
                 @endforeach
+            {{--@dd($contenido)--}}
                 <div class="col-md-12">
-
                     <div class="row">
-
                         <div class="md-form col-md-6">
-                            <input type="text" id="Telefono_2" name="telefono_2" placeholder="Telefono 2" class="form-control" value="">
+                            <input type="text" id="Telefono_2" name="es[telefono_1]" placeholder="Telefono 1" class="form-control" value="{!! $contenido['es']['telefono_1'] ?? '' !!}">
+                        </div>
+                        <div class="md-form col-md-6">
+                            <input type="text" id="Telefono_2" name="es[telefono_2]" placeholder="Telefono 2" class="form-control" value="{!! $contenido['es']['telefono_2'] ?? '' !!}">
+                        </div>
+                        <div class="md-form col-md-6">
+                            <input type="text" id="Telefono_2" name="es[telefono_3]" placeholder="Telefono 3" class="form-control" value="{!! $contenido['es']['telefono_3'] ?? '' !!}">
+                        </div>
+                        <div class="md-form col-md-6">
+                            <input type="text" id="Telefono_2" name="es[telefono_4]" placeholder="Telefono 4" class="form-control" value="{!! $contenido['es']['telefono_4'] ?? '' !!}">
                         </div>
                     </div>
                 </div>
             @endif
-{{--            @if($section == 'redes')--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="md-form">--}}
-{{--                        <input type="text" id="Titulo" name="facebook" placeholder="URL Facebook" class="form-control" value="{!! isset($data['facebook']) ? $data['facebook'] : null !!}">--}}
-{{--                    </div>--}}
-{{--                    <div class="md-form">--}}
-{{--                        <input type="text" id="Titulo" name="youtube" placeholder="URL Youtube" class="form-control" value="{!! isset($data['youtube']) ? $data['youtube'] : null !!}">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            @endif--}}
+            @if($section == 'redes')
+                <div class="col-md-12">
+                    <div class="md-form">
+                        <input type="text" id="Titulo" name="es[facebook]" placeholder="URL Facebook" class="form-control" value="{!! $contenido['es']['facebook']  ?? '' !!}">
+                    </div>
+                    <div class="md-form">
+                        <input type="text" id="Titulo" name="es[youtube]" placeholder="URL Youtube" class="form-control" value="{!! $contenido['es']['youtube'] ?? '' !!}">
+                    </div>
+                </div>
+            @endif
 {{--            @if($section == 'condiciones')--}}
 {{--                <div class="md-form col-md-6">--}}
 {{--                    <input type="text" id="Titulo" name="title_es" placeholder="Titulo - español" class="form-control" value="{!!  $contenido->text{'title_es'} ?? '' !!}">--}}

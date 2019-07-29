@@ -31,7 +31,7 @@ class SubfamilyController extends Controller
         {
             foreach ($gallery as $k=>$item)
             {
-                $path = $item['image']->store('uploads/familia');
+                $path = $item['image']->store('uploads/subfamilia');
                 $gallery[$k]['image'] = $path;
             }
         }
@@ -71,8 +71,8 @@ class SubfamilyController extends Controller
                     $gallery[$k]['image'] = $subfamilia->image[$k]['image'];
                 }else{
                     //dd($item['image']);
-                    $path = $item['image']->store('gallery');
-                    $gallery[$k]['image'] = "uploads/{$path}";
+                    $path = $item['image']->store('uploads/subfamilia');
+                    $gallery[$k]['image'] = $path;
                 }
             }
         }

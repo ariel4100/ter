@@ -5,22 +5,23 @@
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-center">
                         <p class="m-0 text-white">Seguinos en</p>
-                        <a href="" class="pl-2"><i class="fab fa-facebook-square" style="color: #CCCCCC"></i></a>
-                        <a href="" class="px-3"><i class="fab fa-youtube" style="color: #CCCCCC"></i></a>
+                        <a href="{{ $redes->text['es']['facebook'] ?? '' }}" class="pl-2"><i class="fab fa-facebook-square" style="color: #CCCCCC"></i></a>
+                        <a href="{{ $redes->text['es']['youtube'] ?? '' }}" class="px-3"><i class="fab fa-youtube" style="color: #CCCCCC"></i></a>
                         <span class="d-none d-sm-block border-left">
                             <i class="far fa-envelope mx-2" style="color: #D33538;"></i>
-                            <a href="mailto:" class="text-white">ventas@ter.com.ar</a>
+                            <a href="mailto:{{ $contacto->text['es']['correo'] ?? '' }}" class="text-white">{{ $contacto->text['es']['correo'] ?? '' }}</a>
                         </span>
                     </div>
                     <div class="col-md-6 d-flex align-items-center justify-content-end">
-                        <form action="" class="form-inline">
+                        <form action="{{ route('buscador') }}" method="get" class="form-inline">
                             <div class="input-group my-1">
-                                <input type="text" class="form-control form-control-sm" placeholder="Estoy buscando..." aria-describedby="basic-addon2">
+                                <input type="text" class="form-control form-control-sm" name="name" placeholder="Estoy buscando..." aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="inputGroupPrepend2"><i class="fas fa-search" style="color: #D33538;" aria-hidden="true"></i></span>
                                 </div>
                             </div>
                         </form>
+
                         <div class="dropdown">
                             <button style="font-size: 15px" class="btn btn-sm m-0 p-0 ml-2 text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ App::getLocale() }}

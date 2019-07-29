@@ -36,11 +36,14 @@
                 <selected-component :familias="{{ json_encode($familias) }}" :producto="{{ json_encode($producto) }}"></selected-component>
                 {{--<select-component :familias="{{ json_encode($familias) }}" :marcas="{{ json_encode($marcas) }}" :modelos="{{ json_encode($modelos) }}" :series="{{ json_encode($series) }}" :producto="{{ json_encode($producto) }}"></select-component>--}}
             </div>
-            <div class="md-form col-md-6">
+{{--            @dd($producto->related)--}}
+            <related-component :related="{{ json_encode($productos) }}" :selectedrelated="{{ json_encode($producto->related) }}"></related-component>
+            <div class="md-form col-md-6 mt-5">
                 <input type="text" id="order" name="order" placeholder="Orden" class="form-control" value="{!! $producto->order !!}">
             </div>
-            <gallery-component :name="'imagenes'"  title="Imagenes" :galeria="{{ json_encode($producto->image['imagenes']) }}"></gallery-component>
-            <gallery-component :name="'gallery'"  title="Galeria de imagenes" :galeria="{{ json_encode($producto->image['gallery']) }}"></gallery-component>
+            <gallery-component :name="'file'"  title="Archivos" :galeria="{{ json_encode($producto->image['archivos'] ?? []) }}"></gallery-component>
+            <gallery-component :name="'imagenes'"  title="Planos" :galeria="{{ json_encode($producto->image['imagenes'] ) }}"></gallery-component>
+            <gallery-component :name="'gallery'"  title="Galeria de imagenes" :galeria="{{ json_encode($producto->image['gallery'] ) }}"></gallery-component>
             <div class="col-md-12 my-4 text-right">
                 <button type="submit" class="btn btn-success">Guardar</button>
             </div>

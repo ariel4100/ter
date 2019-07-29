@@ -130,11 +130,11 @@
                     </li>
                     <li class="list-group-item border-0 d-flex align-items-center px-0 py-1" style="background-color: unset">
                         <i class="material-icons  mr-3" style="color: #D33538">phone_in_talk</i>
-                        <div class="">
-                            <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}"> (54-11) 4717-2220</a>
-                            <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}"> (54-11) 4717-1656</a>
-                            <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}"> (54-11) 4717-1170</a>
-                            <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}"> (54-11) 4836-1863</a>
+                        <div class="d-flex flex-column">
+                            <a href="tel:{!! $contacto->text['es']{'telefono_1'} ?? '' !!}">{!! $contacto->text['es']{'telefono_1'} ?? '' !!}</a>
+                            <a href="tel:{!! $contacto->text['es']{'telefono_2'} ?? '' !!}">{!! $contacto->text['es']{'telefono_2'} ?? '' !!}</a>
+                            <a href="tel:{!! $contacto->text['es']{'telefono_3'} ?? '' !!}">{!! $contacto->text['es']{'telefono_3'} ?? '' !!}</a>
+                            <a href="tel:{!! $contacto->text['es']{'telefono_4'} ?? '' !!}">{!! $contacto->text['es']{'telefono_4'} ?? '' !!}</a>
                         </div>
                     </li>
                     <li class="list-group-item border-0 d-flex align-items-center px-0 py-1" style="background-color: unset">

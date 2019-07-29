@@ -39,6 +39,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
     Route::get('productos/sub/{id}', 'ProductController@productossub')->name('productos.sub');
     Route::get('producto/{id}', 'ProductController@producto')->name('producto');
 
+    Route::get('buscador','FrontendController@buscador')->name('buscador');
+
+    /***MAIL***/
+    Route::post('contacto','MailController@contacto')->name('contacto.mail');
+//    Route::post('postventa','MailController@postventa')->name('post.venta.mail');
 });
 //Route::get('/','FrontendController@home')->name('home');
 
@@ -47,7 +52,7 @@ Auth::routes();
 /*************************RUTAS ADM******************************/
 
 
-Route::group(['middleware' => 'auth',  'prefix' => 'adm'],function (){
+Route::group([   'prefix' => 'adm'],function (){
     Route::view('/',  'adm.dashboard.index');
     // SLIDERS
     Route::group(['prefix' => 'slider', 'as' => 'slider'], function() {

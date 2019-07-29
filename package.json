@@ -23,6 +23,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "vue-multiselect": "^2.1.6",
         "vue-template-compiler": "^2.6.10",
         "vuedraggable": "^2.23.0"
     }

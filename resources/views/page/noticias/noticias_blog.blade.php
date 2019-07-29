@@ -35,7 +35,7 @@
                     @forelse($imagenes as $k=>$item)
                     <div class="carousel-item {{ $k==0 ? 'active' : '' }}">
 
-                        <img class="d-block w-100" src="{!! asset('uploads/'.$item{'image'}) !!}"
+                        <img class="d-block w-100" src="{!! asset($item{'image'}) !!}"
                              alt="First slide">
                     </div>
                     @empty

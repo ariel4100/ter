@@ -26,9 +26,7 @@
                     <div class="col-md-6 mb-5 wow fadeIn">
                         <a href="{{ route('noticias_blog',$n) }}" class="" style="text-decoration: none; color: unset;">
                             <div class="card shadow-none border">
-                                <div class="position-relative overflow-hidden d-flex justify-content-center" style="height:300px;">
-                                    <img src="{{ asset($n->image[0]{'image'} ? 'uploads/'.$n->image[0]{'image'} : 'uploads/no-img.png') }}" class="position-relative h-100">
-                                </div>
+                                <img src="{{ asset($n->image[0]{'image'} ?? 'uploads/no-img.png') }}" style="height: 300px;"  class="img-fluid">
                                 <div class="card-footer" style="background-color: unset; height: 170px">
                                     <span class="ter-fondo badge text-uppercase p-2 my-2">{!! $n->category->text[App::getLocale()]['title'] ?? ''!!}</span>
                                     <h5 class="font-weight-bold">{!! $n->text[App::getLocale()]['title'] ?? ''!!}</h5>
