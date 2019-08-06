@@ -38,13 +38,14 @@
         }
 
         .activo{
-            border-bottom: 2px solid #FEB80B;
-            /*color: #000000 !important;*/
+            border-bottom: 2px solid #D33538;
+            color: #D33538 !important;
         }
 
         .active {
-            background-color: white;
-            color: #3FE2E2 !important;
+            /*background-color: white;*/
+            /*color: #D33538 !important;*/
+            /*border-bottom: 2px solid #D33538;*/
         }
         a{
             color: unset !important;

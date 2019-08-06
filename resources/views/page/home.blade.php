@@ -31,10 +31,10 @@
                     </div>
                 </div>
             </form>
-            <div class="row mt-5">
+            <div class="row mt-3">
                 @forelse($familias as $item)
                     {{--@dd($item)--}}
-                <div class="col-md-3">
+                <div class="col-md-3 mt-5">
                     <a href="{{ route('marcas',$item->id) }}" class="">
                         <img src="{{ asset($item->image[0]['image'] ?? 'uploads/no-img.png') }}" alt="" class="img-fluid">
                         <p class="mb-0 text-center text-white mt-2" style="font-size: 18px; font-weight: 500">{{$item["text"][App::getLocale()]["title"]}}</p>

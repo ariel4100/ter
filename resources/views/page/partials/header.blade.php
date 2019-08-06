@@ -48,13 +48,13 @@
             </button>
             <div class="collapse navbar-collapse flex-md-column" id="navbarNav">
                 <ul class="navbar-nav m-auto d-flex align-items-center">
-                    <li class="nav-item"><a class="nav-link text-dark ml-2  " href="{{ route('home') }}">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark ml-2  " href="{{ route('nosotros') }}">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark ml-2  " href="{{ route('familias') }}">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark ml-2 {{ request()->is('/') ? 'activo' : '' }}" href="{{ route('home') }}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark ml-2 {{ request()->is('nosotros') ? 'activo' : '' }} " href="{{ route('nosotros') }}">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark ml-2 {{ request()->is('productos*') ? 'activo' : '' }} {{ request()->is('marcas*') ? 'activo' : '' }} {{ request()->is('modelos*') ? 'activo' : '' }} {{ request()->is('serie*') ? 'activo' : '' }} {{ request()->is('producto*') ? 'activo' : '' }}" href="{{ route('familias') }}">Productos</a></li>
                     <a class="navbar-brand ml-3" href="{{ url('/') }}"><img src="{{ asset($logos[1]['image']) }}" alt="" class="img-fluid"></a>
-                    <li class="nav-item"><a class="nav-link text-dark ml-2  " href="{{ route('noticias') }}">Novedades</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark ml-2  " href="{{ route('calidad') }}">Calidad</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark ml-2  " href="{{ route('contacto') }}">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark ml-2 {{ request()->is('novedades') ? 'activo' : '' }} " href="{{ route('noticias') }}">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark ml-2 {{ request()->is('calidad') ? 'activo' : '' }} " href="{{ route('calidad') }}">Calidad</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark ml-2 {{ request()->is('contacto') ? 'activo' : '' }} " href="{{ route('contacto') }}">Contacto</a></li>
                 </ul>
             </div>
         </div>

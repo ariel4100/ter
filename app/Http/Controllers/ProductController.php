@@ -23,8 +23,9 @@ class ProductController extends Controller
 //        dd($id);
         $marcas = Brand::where('family_id',$id)->orderBy('order')->get();
         $subfamilias = Subfamily::where('family_id',$id)->orderBy('order')->get();
-        if ($id == 3 || $id == 4)
+        if ($id != 1 && $id != 2)
         {
+//            dd($id);
             $productos = Product::where('family_id',$id)->orderBy('order')->get();
         }else{
             $productos = [];

@@ -1,7 +1,7 @@
 @extends('page.layouts.app')
 @push('style')
     <style>
-        .nav-link{
+        .col-md-4 .nav-link{
             color: #737384 !important;
         }
     </style>

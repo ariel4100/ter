@@ -1,7 +1,7 @@
 @extends('page.layouts.app')
 @push('style')
     <style>
-        .nav-link{
+        .col-md-4 .nav-link{
             color: #737384 !important;
         }
     </style>
@@ -13,7 +13,7 @@
         <div class="row">
             {{--@dd($producto)--}}
             {{--@dd($producto->family->id == 3 || $producto->family->id == 4)--}}
-            @if($producto->family->id == 3 || $producto->family->id == 4)
+            @if($producto->family->id != 1 || $producto->family->id != 2)
                 @include('page.partials.botonera3')
             @else
                 @include('page.partials.botonera2')
